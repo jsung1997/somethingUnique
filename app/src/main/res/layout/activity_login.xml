@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/backgroundblur"
-    tools:context=".MainActivity">
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".ui.login.LoginActivity">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginBottom="454dp"
         app:cardCornerRadius="30dp"
-        app:cardElevation="20dp">
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="46dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +33,7 @@
             android:padding="24dp">
 
             <TextView
-                android:id="@+id/loginText"
+                android:id="@+id/login_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Login"
@@ -36,15 +44,10 @@
 
             <EditText
                 android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/baseline_person_24"
-                android:drawablePadding="8dp"
-                android:hint="Username"
-                android:padding="8dp"
-                android:textColor="@color/black" />
+                style="@style/UsernameField"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:selectAllOnFocus="true" />
 
             <EditText
                 android:id="@+id/password"
@@ -55,19 +58,33 @@
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:hint="Password"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:padding="8dp"
+                android:selectAllOnFocus="true"
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/lavender"
-                android:text="Login"
+                android:enabled="false"
+                android:text="@string/action_sign_in"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="64dp"
+                android:visibility="gone" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
